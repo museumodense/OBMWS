@@ -204,7 +204,6 @@
     <Compile Include="Newtonsoft.Json\Utilities\ValidationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="core\com\WSConstants.cs" />
-    <Compile Include="core\com\WSConstantsDefault.cs" />
     <Compile Include="core\com\WSDataManager.cs" />
     <Compile Include="core\ext\WSConverter.cs" />
     <Compile Include="core\ext\WSExtention.cs" />
