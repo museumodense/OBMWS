@@ -369,10 +369,8 @@ namespace OBMWS
                 public const string SharedMediaPath =               "SharedMediaPath";
                 public const string welcome =                       "welcome";
                 public const string XPass =                         "XPass";
-                //public const string LICENSE =                       "iiolicense";
                 public const string MaxItemsPerRequestForGuests =   "MaxItemsPerRequestForGuests";
-                public const string ConnectionTimeout =             "ConnectionTimeout";                
-                //public const string ImagePath =                     "ImagePath";                
+                public const string ConnectionTimeout =             "ConnectionTimeout";            
             }
 
             #region PUBLIC VALUES
