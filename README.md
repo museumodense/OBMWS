@@ -1,2 +1,2 @@
 # OBMWS
-Dynamic web services API
+Dynamic Web/REST Services API
