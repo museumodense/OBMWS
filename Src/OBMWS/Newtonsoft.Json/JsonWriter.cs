@@ -243,9 +243,9 @@ namespace Newtonsoft.Json
     /// <summary>
     /// Writes the beginning of a Json object.
     /// </summary>
-    public virtual void WriteStartObject(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteStartObject()
     {
-      AutoComplete(JsonToken.StartObject,mode);
+      AutoComplete(JsonToken.StartObject);
       Push(JTokenType.Object);
     }
 
@@ -260,9 +260,9 @@ namespace Newtonsoft.Json
     /// <summary>
     /// Writes the beginning of a Json array.
     /// </summary>
-    public virtual void WriteStartArray(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteStartArray()
     {
-      AutoComplete(JsonToken.StartArray,mode);
+      AutoComplete(JsonToken.StartArray);
       Push(JTokenType.Array);
     }
 
@@ -278,9 +278,9 @@ namespace Newtonsoft.Json
     /// Writes the start of a constructor with the given name.
     /// </summary>
     /// <param name="name">The name of the constructor.</param>
-    public virtual void WriteStartConstructor(string name, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteStartConstructor(string name)
     {
-      AutoComplete(JsonToken.StartConstructor,mode);
+      AutoComplete(JsonToken.StartConstructor);
       Push(JTokenType.Constructor);
     }
 
@@ -296,9 +296,9 @@ namespace Newtonsoft.Json
     /// Writes the property name of a name/value pair on a Json object.
     /// </summary>
     /// <param name="name">The name of the property.</param>
-    public virtual void WritePropertyName(string name, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WritePropertyName(string name)
     {
-      AutoComplete(JsonToken.PropertyName, mode);
+      AutoComplete(JsonToken.PropertyName);
     }
 
     /// <summary>
@@ -584,7 +584,7 @@ namespace Newtonsoft.Json
     {
     }
 
-    internal void AutoComplete(JsonToken tokenBeingWritten, OBMWS.PrintMode mode)
+    internal void AutoComplete(JsonToken tokenBeingWritten)
     {
       int token;
 
@@ -638,17 +638,17 @@ namespace Newtonsoft.Json
     /// <summary>
     /// Writes a null value.
     /// </summary>
-    public virtual void WriteNull(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteNull()
     {
-      AutoComplete(JsonToken.Null, mode);
+      AutoComplete(JsonToken.Null);
     }
 
     /// <summary>
     /// Writes an undefined value.
     /// </summary>
-    public virtual void WriteUndefined(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteUndefined()
     {
-      AutoComplete(JsonToken.Undefined,mode);
+      AutoComplete(JsonToken.Undefined);
     }
 
     /// <summary>
@@ -663,10 +663,10 @@ namespace Newtonsoft.Json
     /// Writes raw JSON where a value is expected and updates the writer's state.
     /// </summary>
     /// <param name="json">The raw JSON to write.</param>
-    public virtual void WriteRawValue(string json, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteRawValue(string json)
     {
       // hack. want writer to change state as if a value had been written
-      AutoComplete(JsonToken.Undefined,mode);
+      AutoComplete(JsonToken.Undefined);
       WriteRaw(json);
     }
 
@@ -674,18 +674,18 @@ namespace Newtonsoft.Json
     /// Writes a <see cref="String"/> value.
     /// </summary>
     /// <param name="value">The <see cref="String"/> value to write.</param>
-    public virtual void WriteValue(string value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(string value)
     {
-      AutoComplete(JsonToken.String,mode);
+      AutoComplete(JsonToken.String);
     }
 
     /// <summary>
     /// Writes a <see cref="Int32"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int32"/> value to write.</param>
-    public virtual void WriteValue(int value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(int value)
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
@@ -694,19 +694,19 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="UInt32"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(uint value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(uint value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
     /// Writes a <see cref="Int64"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int64"/> value to write.</param>
-    public virtual void WriteValue(long value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(long value)
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
@@ -715,46 +715,46 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="UInt64"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(ulong value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(ulong value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
     /// Writes a <see cref="Single"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Single"/> value to write.</param>
-    public virtual void WriteValue(float value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(float value)
     {
-      AutoComplete(JsonToken.Float,mode);
+      AutoComplete(JsonToken.Float);
     }
 
     /// <summary>
     /// Writes a <see cref="Double"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Double"/> value to write.</param>
-    public virtual void WriteValue(double value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(double value)
     {
-      AutoComplete(JsonToken.Float,mode);
+      AutoComplete(JsonToken.Float);
     }
 
     /// <summary>
     /// Writes a <see cref="Boolean"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Boolean"/> value to write.</param>
-    public virtual void WriteValue(bool value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(bool value)
     {
-      AutoComplete(JsonToken.Boolean,mode);
+      AutoComplete(JsonToken.Boolean);
     }
 
     /// <summary>
     /// Writes a <see cref="Int16"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int16"/> value to write.</param>
-    public virtual void WriteValue(short value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(short value)
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
@@ -763,28 +763,28 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="UInt16"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(ushort value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(ushort value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
     /// Writes a <see cref="Char"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Char"/> value to write.</param>
-    public virtual void WriteValue(char value,OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(char value)
     {
-      AutoComplete(JsonToken.String,mode);
+      AutoComplete(JsonToken.String);
     }
 
     /// <summary>
     /// Writes a <see cref="Byte"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Byte"/> value to write.</param>
-    public virtual void WriteValue(byte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(byte value)
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
@@ -793,28 +793,28 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="SByte"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(sbyte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(sbyte value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      AutoComplete(JsonToken.Integer,mode);
+      AutoComplete(JsonToken.Integer);
     }
 
     /// <summary>
     /// Writes a <see cref="Decimal"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Decimal"/> value to write.</param>
-    public virtual void WriteValue(decimal value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(decimal value)
     {
-      AutoComplete(JsonToken.Float,mode);
+      AutoComplete(JsonToken.Float);
     }
 
     /// <summary>
     /// Writes a <see cref="DateTime"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTime"/> value to write.</param>
-    public virtual void WriteValue(DateTime value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(DateTime value)
     {
-      AutoComplete(JsonToken.Date,mode);
+      AutoComplete(JsonToken.Date);
     }
 
 #if !PocketPC && !NET20
@@ -822,9 +822,9 @@ namespace Newtonsoft.Json
     /// Writes a <see cref="DateTimeOffset"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTimeOffset"/> value to write.</param>
-    public virtual void WriteValue(DateTimeOffset value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(DateTimeOffset value)
     {
-      AutoComplete(JsonToken.Date,mode);
+      AutoComplete(JsonToken.Date);
     }
 #endif
 
@@ -832,30 +832,30 @@ namespace Newtonsoft.Json
     /// Writes a <see cref="Guid"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Guid"/> value to write.</param>
-    public virtual void WriteValue(Guid value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(Guid value)
     {
-      AutoComplete(JsonToken.String,mode);
+      AutoComplete(JsonToken.String);
     }
 
     /// <summary>
     /// Writes a <see cref="TimeSpan"/> value.
     /// </summary>
     /// <param name="value">The <see cref="TimeSpan"/> value to write.</param>
-    public virtual void WriteValue(TimeSpan value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(TimeSpan value)
     {
-      AutoComplete(JsonToken.String,mode);
+      AutoComplete(JsonToken.String);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Int32}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Int32}"/> value to write.</param>
-    public virtual void WriteValue(int? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(int? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
@@ -864,25 +864,25 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="Nullable{UInt32}"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(uint?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(uint? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(uint? value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(uint?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Int64}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Int64}"/> value to write.</param>
-    public virtual void WriteValue(long? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(long? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
@@ -891,61 +891,61 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="Nullable{UInt64}"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(ulong?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(ulong? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(ulong? value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(ulong?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Single}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Single}"/> value to write.</param>
-    public virtual void WriteValue(float? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(float? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Double}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Double}"/> value to write.</param>
-    public virtual void WriteValue(double? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(double? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Boolean}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Boolean}"/> value to write.</param>
-    public virtual void WriteValue(bool? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(bool? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Int16}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Int16}"/> value to write.</param>
-    public virtual void WriteValue(short? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(short? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
@@ -954,37 +954,37 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="Nullable{UInt16}"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(ushort?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(ushort? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(ushort? value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(ushort?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Char}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Char}"/> value to write.</param>
-    public virtual void WriteValue(char? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(char? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Byte}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Byte}"/> value to write.</param>
-    public virtual void WriteValue(byte? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(byte? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
@@ -993,37 +993,37 @@ namespace Newtonsoft.Json
     /// <param name="value">The <see cref="Nullable{SByte}"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JsonWriter.WriteValue(sbyte?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public virtual void WriteValue(sbyte? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(sbyte? value)
 #pragma warning restore CS3021 // 'JsonWriter.WriteValue(sbyte?)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{Decimal}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Decimal}"/> value to write.</param>
-    public virtual void WriteValue(decimal? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(decimal? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{DateTime}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{DateTime}"/> value to write.</param>
-    public virtual void WriteValue(DateTime? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(DateTime? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
 #if !PocketPC && !NET20
@@ -1031,12 +1031,12 @@ namespace Newtonsoft.Json
     /// Writes a <see cref="Nullable{DateTimeOffset}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{DateTimeOffset}"/> value to write.</param>
-    public virtual void WriteValue(DateTimeOffset? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(DateTimeOffset? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 #endif
 
@@ -1044,48 +1044,48 @@ namespace Newtonsoft.Json
     /// Writes a <see cref="Nullable{Guid}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{Guid}"/> value to write.</param>
-    public virtual void WriteValue(Guid? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(Guid? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="Nullable{TimeSpan}"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Nullable{TimeSpan}"/> value to write.</param>
-    public virtual void WriteValue(TimeSpan? value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(TimeSpan? value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        WriteValue(value.Value,mode);
+        WriteValue(value.Value);
     }
 
     /// <summary>
     /// Writes a <see cref="T:Byte[]"/> value.
     /// </summary>
     /// <param name="value">The <see cref="T:Byte[]"/> value to write.</param>
-    public virtual void WriteValue(byte[] value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(byte[] value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        AutoComplete(JsonToken.Bytes,mode);
+        AutoComplete(JsonToken.Bytes);
     }
 
     /// <summary>
     /// Writes a <see cref="Uri"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Uri"/> value to write.</param>
-    public virtual void WriteValue(Uri value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(Uri value)
     {
       if (value == null)
-        WriteNull(mode);
+        WriteNull();
       else
-        AutoComplete(JsonToken.String,mode);
+        AutoComplete(JsonToken.String);
     }
 
     /// <summary>
@@ -1093,11 +1093,11 @@ namespace Newtonsoft.Json
     /// An error will raised if the value cannot be written as a single JSON token.
     /// </summary>
     /// <param name="value">The <see cref="Object"/> value to write.</param>
-    public virtual void WriteValue(object value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteValue(object value)
     {
       if (value == null)
       {
-        WriteNull(mode);
+        WriteNull();
         return;
       }
       else if (value is IConvertible)
@@ -1107,80 +1107,80 @@ namespace Newtonsoft.Json
         switch (convertible.GetTypeCode())
         {
           case TypeCode.String:
-            WriteValue(convertible.ToString(CultureInfo.InvariantCulture),mode);
+            WriteValue(convertible.ToString(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Char:
-            WriteValue(convertible.ToChar(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToChar(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Boolean:
-            WriteValue(convertible.ToBoolean(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToBoolean(CultureInfo.InvariantCulture));
             return;
           case TypeCode.SByte:
-            WriteValue(convertible.ToSByte(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToSByte(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Int16:
-            WriteValue(convertible.ToInt16(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToInt16(CultureInfo.InvariantCulture));
             return;
           case TypeCode.UInt16:
-            WriteValue(convertible.ToUInt16(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToUInt16(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Int32:
-            WriteValue(convertible.ToInt32(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToInt32(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Byte:
-            WriteValue(convertible.ToByte(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToByte(CultureInfo.InvariantCulture));
             return;
           case TypeCode.UInt32:
-            WriteValue(convertible.ToUInt32(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToUInt32(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Int64:
-            WriteValue(convertible.ToInt64(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToInt64(CultureInfo.InvariantCulture));
             return;
           case TypeCode.UInt64:
-            WriteValue(convertible.ToUInt64(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToUInt64(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Single:
-            WriteValue(convertible.ToSingle(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToSingle(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Double:
-            WriteValue(convertible.ToDouble(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToDouble(CultureInfo.InvariantCulture));
             return;
           case TypeCode.DateTime:
-            WriteValue(convertible.ToDateTime(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToDateTime(CultureInfo.InvariantCulture));
             return;
           case TypeCode.Decimal:
-            WriteValue(convertible.ToDecimal(CultureInfo.InvariantCulture), mode);
+            WriteValue(convertible.ToDecimal(CultureInfo.InvariantCulture));
             return;
           case TypeCode.DBNull:
-            WriteNull(mode);
+            WriteNull();
             return;
         }
       }
 #if !PocketPC && !NET20
       else if (value is DateTimeOffset)
       {
-        WriteValue((DateTimeOffset)value,mode);
+        WriteValue((DateTimeOffset)value);
         return;
       }
 #endif
       else if (value is byte[])
       {
-        WriteValue((byte[])value, mode);
+        WriteValue((byte[])value);
         return;
       }
       else if (value is Guid)
       {
-        WriteValue((Guid)value, mode);
+        WriteValue((Guid)value);
         return;
       }
       else if (value is Uri)
       {
-        WriteValue((Uri)value, mode);
+        WriteValue((Uri)value);
         return;
       }
       else if (value is TimeSpan)
       {
-        WriteValue((TimeSpan)value, mode);
+        WriteValue((TimeSpan)value);
         return;
       }
 
@@ -1192,16 +1192,16 @@ namespace Newtonsoft.Json
     /// Writes out a comment <code>/*...*/</code> containing the specified text. 
     /// </summary>
     /// <param name="text">Text to place inside the comment.</param>
-    public virtual void WriteComment(string text, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteComment(string text)
     {
-      AutoComplete(JsonToken.Comment,mode);
+      AutoComplete(JsonToken.Comment);
     }
 
     /// <summary>
     /// Writes out the given white space.
     /// </summary>
     /// <param name="ws">The string of white space characters.</param>
-    public virtual void WriteWhitespace(string ws, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public virtual void WriteWhitespace(string ws)
     {
       if (ws != null)
       {

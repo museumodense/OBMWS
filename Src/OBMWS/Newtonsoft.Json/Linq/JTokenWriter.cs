@@ -68,9 +68,9 @@ namespace Newtonsoft.Json.Linq
     /// <summary>
     /// Writes the beginning of a Json object.
     /// </summary>
-    public override void WriteStartObject(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartObject()
     {
-      base.WriteStartObject(mode);
+      base.WriteStartObject();
 
       AddParent(new JObject());
     }
@@ -96,9 +96,9 @@ namespace Newtonsoft.Json.Linq
     /// <summary>
     /// Writes the beginning of a Json array.
     /// </summary>
-    public override void WriteStartArray(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartArray()
     {
-      base.WriteStartArray(mode);
+      base.WriteStartArray();
 
       AddParent(new JArray());
     }
@@ -107,9 +107,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes the start of a constructor with the given name.
     /// </summary>
     /// <param name="name">The name of the constructor.</param>
-    public override void WriteStartConstructor(string name, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartConstructor(string name)
     {
-      base.WriteStartConstructor(name,mode);
+      base.WriteStartConstructor(name);
 
       AddParent(new JConstructor(name));
     }
@@ -127,9 +127,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes the property name of a name/value pair on a Json object.
     /// </summary>
     /// <param name="name">The name of the property.</param>
-    public override void WritePropertyName(string name, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WritePropertyName(string name)
     {
-      base.WritePropertyName(name,mode);
+      base.WritePropertyName(name);
 
       AddParent(new JProperty(name));
     }
@@ -158,18 +158,18 @@ namespace Newtonsoft.Json.Linq
     /// <summary>
     /// Writes a null value.
     /// </summary>
-    public override void WriteNull(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteNull()
     {
-      base.WriteNull(mode);
+      base.WriteNull();
       AddValue(null, JsonToken.Null);
     }
 
     /// <summary>
     /// Writes an undefined value.
     /// </summary>
-    public override void WriteUndefined(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteUndefined()
     {
-      base.WriteUndefined(mode);
+      base.WriteUndefined();
       AddValue(null, JsonToken.Undefined);
     }
 
@@ -187,9 +187,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes out a comment <code>/*...*/</code> containing the specified text.
     /// </summary>
     /// <param name="text">Text to place inside the comment.</param>
-    public override void WriteComment(string text, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteComment(string text)
     {
-      base.WriteComment(text,mode);
+      base.WriteComment(text);
       AddValue(JValue.CreateComment(text), JsonToken.Comment);
     }
 
@@ -197,9 +197,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="String"/> value.
     /// </summary>
     /// <param name="value">The <see cref="String"/> value to write.</param>
-    public override void WriteValue(string value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(string value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value ?? string.Empty, JsonToken.String);
     }
 
@@ -207,9 +207,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Int32"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int32"/> value to write.</param>
-    public override void WriteValue(int value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(int value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -219,10 +219,10 @@ namespace Newtonsoft.Json.Linq
     /// <param name="value">The <see cref="UInt32"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JTokenWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(uint value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(uint value)
 #pragma warning restore CS3021 // 'JTokenWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -230,9 +230,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Int64"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int64"/> value to write.</param>
-    public override void WriteValue(long value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(long value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -242,10 +242,10 @@ namespace Newtonsoft.Json.Linq
     /// <param name="value">The <see cref="UInt64"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JTokenWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(ulong value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(ulong value)
 #pragma warning restore CS3021 // 'JTokenWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -253,9 +253,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Single"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Single"/> value to write.</param>
-    public override void WriteValue(float value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(float value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Float);
     }
 
@@ -263,9 +263,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Double"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Double"/> value to write.</param>
-    public override void WriteValue(double value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(double value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Float);
     }
 
@@ -273,9 +273,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Boolean"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Boolean"/> value to write.</param>
-    public override void WriteValue(bool value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(bool value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Boolean);
     }
 
@@ -283,9 +283,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Int16"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int16"/> value to write.</param>
-    public override void WriteValue(short value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(short value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -295,10 +295,10 @@ namespace Newtonsoft.Json.Linq
     /// <param name="value">The <see cref="UInt16"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JTokenWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(ushort value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(ushort value)
 #pragma warning restore CS3021 // 'JTokenWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -306,9 +306,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Char"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Char"/> value to write.</param>
-    public override void WriteValue(char value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(char value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value.ToString(), JsonToken.String);
     }
 
@@ -316,9 +316,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Byte"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Byte"/> value to write.</param>
-    public override void WriteValue(byte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(byte value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -328,10 +328,10 @@ namespace Newtonsoft.Json.Linq
     /// <param name="value">The <see cref="SByte"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'JTokenWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(sbyte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(sbyte value)
 #pragma warning restore CS3021 // 'JTokenWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Integer);
     }
 
@@ -339,9 +339,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Decimal"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Decimal"/> value to write.</param>
-    public override void WriteValue(decimal value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(decimal value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Float);
     }
 
@@ -349,9 +349,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="DateTime"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTime"/> value to write.</param>
-    public override void WriteValue(DateTime value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(DateTime value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Date);
     }
 
@@ -360,9 +360,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="DateTimeOffset"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTimeOffset"/> value to write.</param>
-    public override void WriteValue(DateTimeOffset value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(DateTimeOffset value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Date);
     }
 #endif
@@ -371,9 +371,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="T:Byte[]"/> value.
     /// </summary>
     /// <param name="value">The <see cref="T:Byte[]"/> value to write.</param>
-    public override void WriteValue(byte[] value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(byte[] value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.Bytes);
     }
 
@@ -381,9 +381,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="TimeSpan"/> value.
     /// </summary>
     /// <param name="value">The <see cref="TimeSpan"/> value to write.</param>
-    public override void WriteValue(TimeSpan value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(TimeSpan value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.String);
     }
 
@@ -391,9 +391,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Guid"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Guid"/> value to write.</param>
-    public override void WriteValue(Guid value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(Guid value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.String);
     }
 
@@ -401,9 +401,9 @@ namespace Newtonsoft.Json.Linq
     /// Writes a <see cref="Uri"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Uri"/> value to write.</param>
-    public override void WriteValue(Uri value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(Uri value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, JsonToken.String);
     }
 

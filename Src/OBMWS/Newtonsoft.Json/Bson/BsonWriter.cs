@@ -93,7 +93,7 @@ namespace Newtonsoft.Json.Bson
     /// Writes out a comment <code>/*...*/</code> containing the specified text.
     /// </summary>
     /// <param name="text">Text to place inside the comment.</param>
-    public override void WriteComment(string text, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteComment(string text)
     {
       throw new JsonWriterException("Cannot write JSON comment as BSON.");
     }
@@ -102,7 +102,7 @@ namespace Newtonsoft.Json.Bson
     /// Writes the start of a constructor with the given name.
     /// </summary>
     /// <param name="name">The name of the constructor.</param>
-    public override void WriteStartConstructor(string name, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartConstructor(string name)
     {
       throw new JsonWriterException("Cannot write JSON constructor as BSON.");
     }
@@ -120,7 +120,7 @@ namespace Newtonsoft.Json.Bson
     /// Writes raw JSON where a value is expected and updates the writer's state.
     /// </summary>
     /// <param name="json">The raw JSON to write.</param>
-    public override void WriteRawValue(string json, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteRawValue(string json)
     {
       throw new JsonWriterException("Cannot write raw JSON as BSON.");
     }
@@ -128,9 +128,9 @@ namespace Newtonsoft.Json.Bson
     /// <summary>
     /// Writes the beginning of a Json array.
     /// </summary>
-    public override void WriteStartArray(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartArray()
     {
-      base.WriteStartArray(mode);
+      base.WriteStartArray();
 
       AddParent(new BsonArray());
     }
@@ -138,9 +138,9 @@ namespace Newtonsoft.Json.Bson
     /// <summary>
     /// Writes the beginning of a Json object.
     /// </summary>
-    public override void WriteStartObject(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteStartObject()
     {
-      base.WriteStartObject(mode);
+      base.WriteStartObject();
 
       AddParent(new BsonObject());
     }
@@ -149,7 +149,7 @@ namespace Newtonsoft.Json.Bson
     /// Writes the property name of a name/value pair on a Json object.
     /// </summary>
     /// <param name="name">The name of the property.</param>
-    public override void WritePropertyName(string name, OBMWS.PrintMode mode= OBMWS.PrintMode.ValueCell)
+    public override void WritePropertyName(string name)
     {
       base.WritePropertyName(name);
 
@@ -211,18 +211,18 @@ namespace Newtonsoft.Json.Bson
     /// <summary>
     /// Writes a null value.
     /// </summary>
-    public override void WriteNull(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteNull()
     {
-      base.WriteNull(mode);
+      base.WriteNull();
       AddValue(null, BsonType.Null);
     }
 
     /// <summary>
     /// Writes an undefined value.
     /// </summary>
-    public override void WriteUndefined(OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteUndefined()
     {
-      base.WriteUndefined(mode);
+      base.WriteUndefined();
       AddValue(null, BsonType.Undefined);
     }
 
@@ -230,9 +230,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="String"/> value.
     /// </summary>
     /// <param name="value">The <see cref="String"/> value to write.</param>
-    public override void WriteValue(string value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(string value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       if (value == null)
         AddValue(null, BsonType.Null);
       else
@@ -243,9 +243,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Int32"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int32"/> value to write.</param>
-    public override void WriteValue(int value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(int value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -255,13 +255,13 @@ namespace Newtonsoft.Json.Bson
     /// <param name="value">The <see cref="UInt32"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'BsonWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(uint value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(uint value)
 #pragma warning restore CS3021 // 'BsonWriter.WriteValue(uint)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value > int.MaxValue)
         throw new JsonWriterException("Value is too large to fit in a signed 32 bit integer. BSON does not support unsigned values.");
 
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -269,9 +269,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Int64"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int64"/> value to write.</param>
-    public override void WriteValue(long value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(long value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Long);
     }
 
@@ -281,13 +281,13 @@ namespace Newtonsoft.Json.Bson
     /// <param name="value">The <see cref="UInt64"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'BsonWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(ulong value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(ulong value)
 #pragma warning restore CS3021 // 'BsonWriter.WriteValue(ulong)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
       if (value > long.MaxValue)
         throw new JsonWriterException("Value is too large to fit in a signed 64 bit integer. BSON does not support unsigned values.");
 
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Long);
     }
 
@@ -295,9 +295,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Single"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Single"/> value to write.</param>
-    public override void WriteValue(float value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(float value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Number);
     }
 
@@ -305,9 +305,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Double"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Double"/> value to write.</param>
-    public override void WriteValue(double value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(double value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Number);
     }
 
@@ -315,9 +315,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Boolean"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Boolean"/> value to write.</param>
-    public override void WriteValue(bool value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(bool value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Boolean);
     }
 
@@ -325,9 +325,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Int16"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Int16"/> value to write.</param>
-    public override void WriteValue(short value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(short value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -337,10 +337,10 @@ namespace Newtonsoft.Json.Bson
     /// <param name="value">The <see cref="UInt16"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'BsonWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(ushort value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(ushort value)
 #pragma warning restore CS3021 // 'BsonWriter.WriteValue(ushort)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -348,9 +348,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Char"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Char"/> value to write.</param>
-    public override void WriteValue(char value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(char value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddToken(new BsonString(value.ToString(), true));
     }
 
@@ -358,9 +358,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Byte"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Byte"/> value to write.</param>
-    public override void WriteValue(byte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(byte value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -370,10 +370,10 @@ namespace Newtonsoft.Json.Bson
     /// <param name="value">The <see cref="SByte"/> value to write.</param>
     [CLSCompliant(false)]
 #pragma warning disable CS3021 // 'BsonWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
-    public override void WriteValue(sbyte value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(sbyte value)
 #pragma warning restore CS3021 // 'BsonWriter.WriteValue(sbyte)' does not need a CLSCompliant attribute because the assembly does not have a CLSCompliant attribute
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Integer);
     }
 
@@ -381,9 +381,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Decimal"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Decimal"/> value to write.</param>
-    public override void WriteValue(decimal value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(decimal value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Number);
     }
 
@@ -391,9 +391,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="DateTime"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTime"/> value to write.</param>
-    public override void WriteValue(DateTime value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(DateTime value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Date);
     }
 
@@ -402,9 +402,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="DateTimeOffset"/> value.
     /// </summary>
     /// <param name="value">The <see cref="DateTimeOffset"/> value to write.</param>
-    public override void WriteValue(DateTimeOffset value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(DateTimeOffset value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Date);
     }
 #endif
@@ -413,9 +413,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="T:Byte[]"/> value.
     /// </summary>
     /// <param name="value">The <see cref="T:Byte[]"/> value to write.</param>
-    public override void WriteValue(byte[] value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(byte[] value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddValue(value, BsonType.Binary);
     }
 
@@ -423,9 +423,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Guid"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Guid"/> value to write.</param>
-    public override void WriteValue(Guid value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(Guid value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddToken(new BsonString(value.ToString(), true));
     }
 
@@ -433,9 +433,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="TimeSpan"/> value.
     /// </summary>
     /// <param name="value">The <see cref="TimeSpan"/> value to write.</param>
-    public override void WriteValue(TimeSpan value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(TimeSpan value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddToken(new BsonString(value.ToString(), true));
     }
 
@@ -443,9 +443,9 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="Uri"/> value.
     /// </summary>
     /// <param name="value">The <see cref="Uri"/> value to write.</param>
-    public override void WriteValue(Uri value, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public override void WriteValue(Uri value)
     {
-      base.WriteValue(value,mode);
+      base.WriteValue(value);
       AddToken(new BsonString(value.ToString(), true));
     }
     #endregion
@@ -454,7 +454,7 @@ namespace Newtonsoft.Json.Bson
     /// Writes a <see cref="T:Byte[]"/> value that represents a BSON object id.
     /// </summary>
     /// <param name="value"></param>
-    public void WriteObjectId(byte[] value, OBMWS.PrintMode mode= OBMWS.PrintMode.ValueCell)
+    public void WriteObjectId(byte[] value)
     {
       ValidationUtils.ArgumentNotNull(value, "value");
 
@@ -462,7 +462,7 @@ namespace Newtonsoft.Json.Bson
         throw new Exception("An object id must be 12 bytes");
 
       // hack to update the writer state
-      AutoComplete(JsonToken.Undefined,mode);
+      AutoComplete(JsonToken.Undefined);
       AddValue(value, BsonType.Oid);
     }
 
@@ -471,12 +471,12 @@ namespace Newtonsoft.Json.Bson
     /// </summary>
     /// <param name="pattern">The regex pattern.</param>
     /// <param name="options">The regex options.</param>
-    public void WriteRegex(string pattern, string options, OBMWS.PrintMode mode = OBMWS.PrintMode.ValueCell)
+    public void WriteRegex(string pattern, string options)
     {
       ValidationUtils.ArgumentNotNull(pattern, "pattern");
 
       // hack to update the writer state
-      AutoComplete(JsonToken.Undefined,mode);
+      AutoComplete(JsonToken.Undefined);
       AddToken(new BsonRegex(pattern, options));
     }
 

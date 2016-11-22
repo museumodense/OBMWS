@@ -8,9 +8,10 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OBMWS</RootNamespace>
-    <AssemblyName>OBMWS</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <AssemblyName>NET45-OBMWS-V1.6.0.0</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,10 +30,20 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -191,8 +203,133 @@
     <Compile Include="Newtonsoft.Json\Utilities\ThreadSafeStore.cs" />
     <Compile Include="Newtonsoft.Json\Utilities\ValidationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="core\com\WSConstants.cs" />
+    <Compile Include="core\com\WSConstantsDefault.cs" />
+    <Compile Include="core\com\WSDataManager.cs" />
+    <Compile Include="core\ext\WSConverter.cs" />
+    <Compile Include="core\ext\WSExtention.cs" />
+    <Compile Include="core\ext\WSHelper.cs" />
+    <Compile Include="core\ext\WSHelperDefault.cs" />
+    <Compile Include="core\ext\WSLog.cs" />
+    <Compile Include="core\io\db\cache\WSDCItem.cs" />
+    <Compile Include="core\io\db\cache\WSDCState.cs" />
+    <Compile Include="core\io\db\cache\WSServerCache.cs" />
+    <Compile Include="core\io\db\cache\WSSessionCache.cs" />
+    <Compile Include="core\io\db\cache\WSSynchronizedCache.cs" />
+    <Compile Include="core\io\db\WSClientMeta.cs" />
+    <Compile Include="core\io\db\WSColumnRef.cs" />
+    <Compile Include="core\io\db\WSDataContext.cs" />
+    <Compile Include="core\io\db\WSServerMeta.cs" />
+    <Compile Include="core\io\input\com\WSCall.cs" />
+    <Compile Include="core\io\input\com\WSRequest.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSAllocable.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSParam\WSConstParam.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSParam\WSParam.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSParam\WSParamList.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSParam\WSParamValidatable.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSParam\WSTableParam.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSValue\WSCommandKey.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSValue\WSCommandValue.cs" />
+    <Compile Include="core\io\input\WSAllocable\WSValue\WSValue.cs" />
+    <Compile Include="core\io\input\WSFilter\WSCombineFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSEntityFilter\WSEntityFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSBoolFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSDateFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSEntityFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSEntityListFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSFieldFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSGuidFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSNumericFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSStringFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSFieldFilter\WSTimeFFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSMemberFilter\WSMemberFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSOptionFilter\WSBoolOFilter.cs" />
+    <Compile Include="core\io\input\WSFilter\WSOptionFilter\WSOptionFilter.cs" />
+    <Compile Include="core\io\input\WSFormat\WSBinaryFormat.cs" />
+    <Compile Include="core\io\input\WSFormat\WSFormat.cs" />
+    <Compile Include="core\io\input\WSFormat\WSMetaFormat.cs" />
+    <Compile Include="core\io\input\WSJson\WSFilterConverter.cs" />
+    <Compile Include="core\io\input\WSJson\WSJApplyMode\WSJApplyMode.cs" />
+    <Compile Include="core\io\input\WSJson\WSJKeyValue\WSJKeyValue.cs" />
+    <Compile Include="core\io\input\WSJson\WSJKeyValue\WSJProperty.cs" />
+    <Compile Include="core\io\input\WSJson\WSJOutput.cs" />
+    <Compile Include="core\io\input\WSJson\WSJson.cs" />
+    <Compile Include="core\io\input\WSJson\WSJVal\WSJArray.cs" />
+    <Compile Include="core\io\input\WSJson\WSJVal\WSJObject.cs" />
+    <Compile Include="core\io\input\WSJson\WSJVal\WSJVal.cs" />
+    <Compile Include="core\io\input\WSJson\WSJVal\WSJValue.cs" />
+    <Compile Include="core\io\input\WSOperation\WSOperation.cs" />
+    <Compile Include="core\io\input\WSOperation\WSStateOperation.cs" />
+    <Compile Include="core\io\input\WSOperation\WSValueOperation.cs" />
+    <Compile Include="core\io\input\WSSchema\WSBaseSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSEntityBaseSchema\WSEntityBaseSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSEntityBaseSchema\WSEntityListSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSEntityBaseSchema\WSEntitySchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSFieldSchema\WSEntityFieldSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSFieldSchema\WSFieldSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSFieldSchema\WSPrimitiveFieldSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSMemberSchema\WSMemberSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSOptionSchema.cs" />
+    <Compile Include="core\io\input\WSSchema\WSSchema.cs" />
+    <Compile Include="core\io\input\WSSource\WSDBSet.cs" />
+    <Compile Include="core\io\input\WSSource\WSRoleSet.cs" />
+    <Compile Include="core\io\input\WSSource\WSSource.cs" />
+    <Compile Include="core\io\input\WSSource\WSSources.cs" />
+    <Compile Include="core\io\input\WSSource\WSSourceSet.cs" />
+    <Compile Include="core\io\input\WSSource\WSTableSource.cs" />
+    <Compile Include="core\io\input\WSSource\WSUserDBSet.cs" />
+    <Compile Include="core\io\input\WSSource\WSUserSet.cs" />
+    <Compile Include="core\io\output\com\WSException.cs" />
+    <Compile Include="core\io\output\WSEntity\Dynamic\WSDynamicEntity.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\System\V0SystemResponse.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\System\V1SystemResponseRecord.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\System\WSSystemEntity.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\System\WSSystemRecord.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\V1SystemResponseEntity.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\WSStaticEntity.cs" />
+    <Compile Include="core\io\output\WSEntity\Static\WSStatusEntity.cs" />
+    <Compile Include="core\io\output\WSEntity\WSEntity.cs" />
+    <Compile Include="core\io\output\WSRecord\com\WSRecordJsonConverter.cs" />
+    <Compile Include="core\io\output\WSRecord\WSDynamicRecord.cs" />
+    <Compile Include="core\io\output\WSRecord\WSRecord.cs" />
+    <Compile Include="core\io\output\WSRecord\WSRedirectRecord.cs" />
+    <Compile Include="core\io\output\WSRecord\WSStaticRecord.cs" />
+    <Compile Include="core\io\output\WSResponse\com\WSV0ResponseRecord.cs" />
+    <Compile Include="core\io\output\WSResponse\com\WSV1ResponseEntity.cs" />
+    <Compile Include="core\io\output\WSResponse\com\WSV1ResponseRecord.cs" />
+    <Compile Include="core\io\output\WSResponse\dynamic\BinaryImageResponse.cs" />
+    <Compile Include="core\io\output\WSResponse\dynamic\BinaryPDFResponse.cs" />
+    <Compile Include="core\io\output\WSResponse\dynamic\WSDynamicResponse.cs" />
+    <Compile Include="core\io\output\WSResponse\static\WSStaticResponse.cs" />
+    <Compile Include="core\io\output\WSResponse\static\WSSystemResponse.cs" />
+    <Compile Include="core\io\output\WSResponse\WSResponse.cs" />
+    <Compile Include="core\io\output\WSStatus\WSAuthState.cs" />
+    <Compile Include="core\io\output\WSStatus\WSStatus.cs" />
+    <Compile Include="core\io\output\WSStatus\WSStatusBase.cs" />
+    <Compile Include="core\io\output\WSStatus\WSStatusNote.cs" />
+    <Compile Include="core\io\output\WSStatus\WSStatus_JSON.cs" />
+    <Compile Include="core\io\PrintMode.cs" />
+    <Compile Include="core\io\security\WSAccessKeyEntity.cs" />
+    <Compile Include="core\io\security\WSAccessMode.cs" />
+    <Compile Include="core\io\security\WSActivationKey.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSAccessKey\WSAccessKey.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSAccessKey\WSShareKey.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSAuthEntity.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSAuthRecord.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSDeauthEntity.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSV1AuthResponseEntity.cs" />
+    <Compile Include="core\io\security\WSAuthEntity\WSV1AuthResponseRecord.cs" />
+    <Compile Include="core\io\security\WSCurrentUser.cs" />
+    <Compile Include="core\io\security\WSSecurity.cs" />
+    <Compile Include="core\io\security\WSSecurityDefault.cs" />
+    <Compile Include="core\io\security\WSSecurityMeta.cs" />
+    <Compile Include="core\io\security\WSSession.cs" />
+    <Compile Include="core\io\security\WSUserToken.cs" />
+    <Compile Include="core\io\serializable\WSEmail.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LICENSE.md" />
     <None Include="Newtonsoft.Json\LICENSE.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
