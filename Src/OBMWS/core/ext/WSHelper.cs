@@ -345,4 +345,16 @@ namespace OBMWS
             return name;
         }
     }
+    public class WSHelperDefault : WSHelper
+    {
+        public override string registerError(Guid key, string ip, string source, string title, string exception)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string registerHttpActivity(string url, string uip, string http_request, string httpSession, string urlQuery, string postParams, string referrer, string _Notes, bool save = false)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

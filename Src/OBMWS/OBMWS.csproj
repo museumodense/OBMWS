@@ -209,7 +209,6 @@
     <Compile Include="core\ext\WSConverter.cs" />
     <Compile Include="core\ext\WSExtention.cs" />
     <Compile Include="core\ext\WSHelper.cs" />
-    <Compile Include="core\ext\WSHelperDefault.cs" />
     <Compile Include="core\ext\WSLog.cs" />
     <Compile Include="core\io\db\cache\WSDCItem.cs" />
     <Compile Include="core\io\db\cache\WSDCState.cs" />
